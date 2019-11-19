@@ -1,0 +1,57 @@
+﻿@model PUC.LDSI.Domain.Entities.Publicacao
+
+@{
+    ViewData["Title"] = "Excluir Publicação";
+}
+
+<h3>Confirma a exclusão desta publicação?</h3>
+<div>
+    <h4>Publicacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Avaliação
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Avaliacao.Disciplina) -
+            @Html.DisplayFor(model => model.Avaliacao.Materia) -
+            @Html.DisplayFor(model => model.Avaliacao.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Turma)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Turma.Id)
+        </dd>
+        <dt>
+            Publicado em
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataPublicacao)
+        </dd>
+        <dt>
+            Início
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataInicio)
+        </dd>
+        <dt>
+            Fim
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataFim)
+        </dd>
+        <dt>
+            Valor da Prova
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorProva)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-default" />
+        <a asp-action="Index" class="btn btn-default">Cancelar</a>
+    </form>
+</div>

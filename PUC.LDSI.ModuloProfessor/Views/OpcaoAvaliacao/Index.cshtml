@@ -1,0 +1,47 @@
+﻿@model PUC.LDSI.Domain.QueryResult.QuestaoQueryResult
+
+@{
+    ViewData["Title"] = "Opções da Avaliação";
+}
+
+<h2>Avaliação</h2>
+
+<h4>@Html.DisplayFor(model => model.Avaliacao.Materia) / @Html.DisplayFor(model => model.Avaliacao.Disciplina) / @Html.DisplayFor(model => model.Avaliacao.Descricao)</h4>
+
+<h5>@Html.DisplayFor(model => model.Enunciado)</h5>
+
+<p>
+    <a asp-action="Create" asp-route-questaoId="@Model.QuestaoId" class="btn btn-default">Nova Opção</a>
+    <a asp-action="Index" asp-route-avaliacaoId="@Model.Avaliacao.AvaliacaoId" asp-controller="Questao" class="btn btn-default">Voltar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Opção
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Opcoes)
+        {
+            <tr>
+                <td>
+                    @{ var opcao = item.Verdadeira ? "V" : "F"; }
+                    @opcao
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.OpcaoAvaliacaoId"><i class="fas fa-edit" title="Editar Opção"></i></a>&nbsp;
+                    <a asp-action="Delete" asp-route-id="@item.OpcaoAvaliacaoId"><i class="far fa-trash-alt" title="Excluir Opção"></i></a>&nbsp;
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

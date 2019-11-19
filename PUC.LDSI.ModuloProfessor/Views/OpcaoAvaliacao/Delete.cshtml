@@ -1,0 +1,33 @@
+﻿@model PUC.LDSI.Domain.Entities.OpcaoAvaliacao
+
+@{
+    ViewData["Title"] = "Excluir Questão";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Confirma a exclusão desta questão?</h3>
+<div>
+    <h4>OpcaoAvaliacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Verdadeira)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Verdadeira)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-default" /> 
+        <a asp-action="Index" asp-route-questaoId="@Model.QuestaoId" class="btn btn-default">Cancelar</a>
+    </form>
+</div>

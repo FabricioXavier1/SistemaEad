@@ -1,0 +1,68 @@
+﻿@model IEnumerable<PUC.LDSI.Domain.Entities.Publicacao>
+
+@{
+    ViewData["Title"] = "Publicações";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-default">Nova Publicação</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Turma
+            </th>
+            <th>
+                Avaliação
+            </th>
+            <th>
+                Valor
+            </th>
+            <th>
+                Publicado Em
+            </th>
+            <th>
+                Início
+            </th>
+            <th>
+                Fim
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turma.Nome)
+            </td>
+            <td>
+                @(item.Avaliacao.Materia + " - " + item.Avaliacao.Disciplina + " - " + item.Avaliacao.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorProva)
+            </td>
+            <td>
+                @item.DataPublicacao.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @item.DataInicio.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @item.DataFim.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit" title="Editar Publicação"></i></a>&nbsp;
+                <!--
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-tools" title="Visualizar Publicação"></i></a>&nbsp;
+                -->
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="far fa-trash-alt" title="Excluir Publicação"></i></a>&nbsp;
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

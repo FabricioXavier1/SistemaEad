@@ -1,0 +1,53 @@
+﻿@model PUC.LDSI.Domain.QueryResult.AvaliacaoQueryResult
+
+@{
+    ViewData["Title"] = "Questões da Avaliação";
+}
+
+<h2>Avaliação</h2>
+
+<h4>@Html.DisplayFor(model => model.Materia) / @Html.DisplayFor(model => model.Disciplina) / @Html.DisplayFor(model => model.Descricao)</h4>
+
+<p>
+    <a asp-action="Create" asp-route-avaliacaoId="@Model.AvaliacaoId" class="btn btn-default">Nova Questão</a>
+    <a asp-action="Index" asp-controller="Avaliacao" class="btn btn-default">Voltar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>@Html.DisplayNameFor(model => model.Questoes.FirstOrDefault().Tipo)</th>
+            <th>@Html.DisplayNameFor(model => model.Questoes.FirstOrDefault().Enunciado)</th>
+            <th>Nº Opções</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var numeroQuestao = 1;
+
+            foreach (var item in Model.Questoes)
+            {
+                <tr>
+                    <td>@numeroQuestao</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Enunciado)
+                    </td>
+                    <td style="@(item.Opcoes.Count < 4 ? "color:red" : "")">
+                        @Html.DisplayFor(modelItem => item.Opcoes.Count)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.QuestaoId"><i class="fas fa-edit" title="Editar Questão"></i></a>&nbsp;
+                        <a asp-action="Index" asp-controller="OpcaoAvaliacao" asp-route-questaoId="@item.QuestaoId"><i class="fas fa-tools" title="Construir Questão"></i></a>&nbsp;
+                        <a asp-action="Delete" asp-route-id="@item.QuestaoId"><i class="far fa-trash-alt" title="Excluir Questão"></i></a>&nbsp;
+                    </td>
+                </tr>
+
+                numeroQuestao++;
+            }
+        }
+    </tbody>
+</table>

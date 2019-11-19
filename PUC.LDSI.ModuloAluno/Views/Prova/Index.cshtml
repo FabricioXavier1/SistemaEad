@@ -1,0 +1,80 @@
+﻿@model IEnumerable<PUC.LDSI.Domain.QueryResult.AvaliacaoPublicadaQueryResult>
+
+@{
+    ViewData["Title"] = "Minhas Avaliações";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Avaliação
+            </th>
+            <th>
+                Valor
+            </th>
+            <th>
+                Período
+            </th>
+            <th>
+                Situação
+            </th>
+            <th>
+                Realizada Em
+            </th>
+            <th>
+                Nota Obtida
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @(item.Materia + " - " + item.Disciplina + " - " + item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorProva)
+            </td>
+            <td>
+                @(item.DataInicio.ToString("dd/MM/yyyy") + " - " + item.DataFim.ToString("dd/MM/yyyy"))
+            </td>
+            <td>
+                @if (item.DataRealizacao != null)
+                {
+                    <spam>Realizada</spam>
+                }
+                else if (DateTime.Today < item.DataInicio.Date)
+                {
+                    <spam>Agendada</spam>
+                }
+                else if (DateTime.Today <= item.DataFim.Date)
+                {
+                    <spam>Disponível</spam>
+                }
+                else 
+                {
+                    item.NotaObtida = 0;
+                    <spam>Perdida</spam>
+                }
+            </td>
+            <td>
+                @item.DataRealizacao?.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @(item.NotaObtida == null ? "" : item.NotaObtida.Value.ToString("0.##"))
+            </td>
+            <td>
+                @if (item.DataRealizacao == null && DateTime.Today >= item.DataInicio.Date && DateTime.Today <= item.DataFim.Date)
+                {
+                    <a asp-action="PerformTest" asp-route-publicacaoid="@item.PublicacaoId"><i class="fas fa-play-circle" title="Realizar Prova"></i></a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@model PUC.LDSI.Domain.QueryResult.AvaliacaoPublicadaQueryResult
+
+@{
+    ViewData["Title"] = "Realizar Prova";
+}
+
+<input id="PublicacaoId" type="hidden" value="@Model.PublicacaoId" />
+<script src="~/js/PerformTest.js" asp-append-version="true"></script>
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+<div class="prova-container">
+    <div class="row">
+        <div class="col">
+            <h4>@(Model.Disciplina + " / " + Model.Materia + " / " + Model.Descricao)</h4>
+        </div>
+    </div>
+    <div class="row questao-container">
+        <div class="col-md-1 questao-icon-navigation">
+            <i class="fas fa-angle-double-left icon-navigation-left" style="font-size:40px"></i>
+        </div>
+        <div class="col-md-10 opcoes-prova">
+            <div class="opcoes-prova-enunciado"></div>
+            <div class="opcoes-prova-opcoes"></div>
+            <div class="opcoes-prova-submit" style="display:none">
+                <a id="btnConcluirProva" class="btn btn-default">Concluir Prova</a>
+            </div>
+        </div>
+        <div class="col-md-1 questao-icon-navigation">
+            <i class="fas fa-angle-double-right icon-navigation-right" style="font-size:40px"></i>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

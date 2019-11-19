@@ -1,0 +1,107 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.prof-cardview-avaliacao {
+    width: 360px;
+    cursor: pointer;
+}
+
+.prova-container {
+    height: 90%;
+}
+
+.questao-container {
+    height: 100%
+}
+
+.questao-icon-navigation {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.icon-navigation-left {
+    cursor: pointer;
+}
+
+.icon-navigation-right {
+    cursor: pointer;
+}
+
+.opcoes-prova-enunciado {
+    margin-bottom: 15px;
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+.opcoes-prova-submit {
+    margin-top: 20px;
+}
+
+.questao-summary {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.questao-ok {
+    color: green;
+    margin-right: 10px;
+}
+
+.questao-bad {
+    color: darkorange;
+    margin-right: 10px;
+}
+
+.check-resposta {
+    margin-left: 10px;
+}
+
+.check-resposta {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.custom-navbar-color {
+    background-color: #72ff70;
+    border-color: #66c56d;
+}
+
+.icon-msg-popup {
+    font-size: 25px;
+}
